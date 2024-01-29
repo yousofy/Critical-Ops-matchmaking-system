@@ -15,7 +15,7 @@ a new feature for the current game.
 
 ## User Stories:
 
-- As a User, I want to be able to add a player with a unique name to the server* 
+- As a User, I want to be able to add a player to the server* 
 - As a User, I want to be able to view all the players in the server
 - As a User, I want to be able to play against other players based on my rating
 - As a User, I want to be able to receive rewards based on my rating
