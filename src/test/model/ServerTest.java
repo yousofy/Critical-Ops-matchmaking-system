@@ -1,9 +1,6 @@
 package model;
 
 import org.junit.jupiter.api.*;
-
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 // Test suits for the Server Class
@@ -47,6 +44,15 @@ public class ServerTest {
         assertEquals(3, sv.getPlayers().size());
         sv.addPlayer(p3);
         assertEquals(3, sv.getPlayers().size());
+    }
+
+    @Test
+    void testFindPlayer() {
+        assertNull(sv.findPlayer("Nefin"));
+        assertEquals(p1, sv.findPlayer("MiesterZ"));
+        assertEquals(p2, sv.findPlayer("Cuddling"));
+        assertEquals(p3, sv.findPlayer("Woozy"));
+        assertEquals(p4, sv.findPlayer("Yousof"));
     }
 
     @Test
@@ -149,15 +155,6 @@ public class ServerTest {
         assertFalse(sv.matchCriteria(p1, p4));
         p1.setRank(5);
         assertTrue(sv.matchCriteria(p1, p4));
-    }
-
-    @Test
-    void testReport() {
-        assertEquals("Player with given name is not found. Please try again.", sv.report("Surge"));
-        assertEquals(p1.handleReport(), sv.report("MiesterZ"));
-        assertEquals(p3.handleReport(), sv.report("Woozy"));
-        assertEquals(p3.handleReport(), sv.report("Woozy"));
-        assertEquals(p4.handleReport(), sv.report("Yousof"));
     }
 
 }

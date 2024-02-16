@@ -38,6 +38,19 @@ class PlayerTest {
     }
 
     @Test
+    void testGetDisplayRank() {
+        assertEquals("Bronze", p1.getDisplayRank());
+        p1.setRank(2);
+        assertEquals("Silver", p1.getDisplayRank());
+        p1.setRank(3);
+        assertEquals("Gold", p1.getDisplayRank());
+        p1.setRank(4);
+        assertEquals("Platinum", p1.getDisplayRank());
+        p1.setRank(5);
+        assertEquals("Diamond", p1.getDisplayRank());
+    }
+
+    @Test
     void testUpdateRankNormalCase() {
         p1.setRank(3);
         p1.updateRank(true);

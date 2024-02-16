@@ -47,6 +47,21 @@ public class Player {
         return rank;
     }
 
+    // EFFECTS: returns the player's rank description
+    public String getDisplayRank() {
+        if (BRONZE == getRank()) {
+            return "Bronze";
+        } else if (SILVER == getRank()) {
+            return "Silver";
+        } else if (GOLD == getRank()) {
+            return "Gold";
+        } else if (PLATINUM == getRank()) {
+            return "Platinum";
+        } else {
+            return "Diamond";
+        }
+    }
+
     public void setRank(int rank) {
         this.rank = rank;
     }

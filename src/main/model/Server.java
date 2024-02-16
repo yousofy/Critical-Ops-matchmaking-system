@@ -25,6 +25,16 @@ public class Server {
         return players;
     }
 
+    // EFFECTS: given a player's name, returns the player if they are in the server. Otherwise, returns null
+    public Player findPlayer(String name) {
+        for (Player player : players) {
+            if (name.equals(player.getName())) {
+                return player;
+            }
+        }
+        return null;
+    }
+
     // MODIFIES: player, opponent
     // EFFECTS: If the player is banned, does nothing and returns banned players cannot play.
     //          Otherwise, given a player and match result (true=win, false=lose), finds a different
@@ -56,21 +66,8 @@ public class Server {
     // EFFECTS: Returns true if both given players have the same game mode and are at maximum
     //          one rank apart and if opponent is unbanned. Otherwise, returns false.
     public boolean matchCriteria(Player player, Player opponent) {
-        return !opponent.isBanned() && player.getGameMode() == opponent.getGameMode()
+        return !opponent.isBanned() && player.getGameMode().equals(opponent.getGameMode())
                 && player.getRank() + 1 >= opponent.getRank() && player.getRank() - 1 <= opponent.getRank();
-    }
-
-    // REQUIRES: name is a non-empty string
-    // MODIFIES: player
-    // EFFECTS: reports the player corresponding to the given name and returns the relevant message depending on
-    //          the report, does nothing if no such player is found and returns the player was not found.
-    public String report(String name) {
-        for (Player player : players) {
-            if (name == player.getName()) {
-                return player.handleReport();
-            }
-        }
-        return "Player with given name is not found. Please try again.";
     }
 
 }
