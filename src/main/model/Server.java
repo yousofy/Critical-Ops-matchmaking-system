@@ -12,6 +12,7 @@ public class Server {
         players = new ArrayList<>();
     }
 
+    // REQUIRES: the player's name is not already contained in the server
     // MODIFIES: this
     // EFFECTS: adds given player to the server, does nothing if player already exists
     public void addPlayer(Player player) {
@@ -20,27 +21,56 @@ public class Server {
         }
     }
 
-    // EFFECTS: returns all existing players in the server
     public ArrayList<Player> getPlayers() {
         return players;
     }
 
-    // MODIFIES: this, player, opponent
-    // EFFECTS: given a player, finds a player in the server to match against. The two
-    //          players must have the same gamemode and at maximum be one rank apart.
-    //          After the match, update both players' rank and history according to whether
-    //          each player lost or won. Finally, return matchmaking was successful.
-    //          If no matching players found, do nothing and return no available players.
-    public String matchMaking(Player player) {
+    // MODIFIES: player, opponent
+    // EFFECTS: If the player is banned, does nothing and returns banned players cannot play.
+    //          Otherwise, given a player and match result (true=win, false=lose), finds a player to
+    //          match against. The two players must meet the matchmaking criteria according to
+    //          matchCriteria. After the match, update both players' rank and history according to
+    //          whether each player lost or won. Finally, returns matchmaking was successful.
+    //          If no matching players were found at all, does nothing and returns no available players.
+    public String matchmaking(Player player, boolean result) {
+        if (player.isBanned()) {
+            return "Banned players cannot play. Matchmaking failed.";
+        }
         for (Player opponent : players) {
-            if (rankCriteria(player, opponent)) {
-                return "do more work";
+            if (matchCriteria(player, opponent)) {
+                player.updateRank(result);
+                player.updateHistory(result);
+                opponent.updateRank(!result);
+                opponent.updateHistory(!result);
+                if (result) {
+                    return "Congratulations on winning! Matchmaking successful.";
+                } else {
+                    return "Better luck next time... Matchmaking successful.";
+                }
             }
         }
-        return "do even more work";
+        return "No available players found for matchmaking. Try again later.";
     }
 
-    public boolean rankCriteria(Player p1, Player p2) {
-        return true;
+    // REQUIRES: !player.isBanned()
+    // EFFECTS: Returns true if both given players have the same game mode and are at maximum
+    //          one rank apart and if opponent is unbanned. Otherwise, returns false.
+    public boolean matchCriteria(Player player, Player opponent) {
+        return !opponent.isBanned() && player.getGameMode() == opponent.getGameMode()
+                && player.getRank() + 1 >= opponent.getRank() && player.getRank() - 1 <= opponent.getRank();
     }
+
+    // REQUIRES: name is a non-empty string
+    // MODIFIES: player
+    // EFFECTS: reports the player corresponding to the given name and returns the relevant message depending on
+    //          the report, does nothing if no such player is found and returns the player was not found.
+    public String report(String name) {
+        for (Player player : players) {
+            if (name == player.getName()) {
+                return player.handleReport();
+            }
+        }
+        return "Player with given name is not found. Please try again.";
+    }
+
 }

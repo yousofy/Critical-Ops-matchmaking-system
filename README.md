@@ -17,10 +17,10 @@ could introduce  new features for the current game.
 
 - As a User, I want to be able to add a player to the server*
 - As a User, I want to be able to view all the players in the server
-- As a User, I want to be able to play against other players based on my rating and game mode
-- As a User, I want to be able to receive rewards based on my rating and game mode
-- As a User, I want to be able to view my past games' statistics
-- As a User, I want to be able to report other players for cheating or game abuse
+- As a User, I want to be able to play against other players based on my rank and game mode
+- As a User, I want to be able to receive rewards based on my current rank
+- As a User, I want to be able to view the result of my previous games
+- As a User, I want to be able to report other players for cheating, so they get banned
 
 (* although a single player can have multiple accounts, we will assume 
 everyone in the server is a unique person as it would be impossible for 
