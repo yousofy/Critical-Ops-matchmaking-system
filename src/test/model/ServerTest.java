@@ -21,15 +21,21 @@ public class ServerTest {
         p2 = new Player("Cuddling", "1v1");
         p3 = new Player("Woozy", "GunGame");
         p4 = new Player("Yousof", "Defuse");
+        sv.addPlayer(p1);
+        sv.addPlayer(p2);
+        sv.addPlayer(p3);
+        sv.addPlayer(p4);
     }
 
     @Test
     void testConstructor() {
+        sv = new Server();
         assertTrue(sv.getPlayers().isEmpty());
     }
 
     @Test
     void testAddPlayer() {
+        sv = new Server();
         assertEquals(0, sv.getPlayers().size());
         sv.addPlayer(p1);
         assertEquals(1, sv.getPlayers().size());
@@ -44,7 +50,82 @@ public class ServerTest {
     }
 
     @Test
-    void testMatchCriteriaRankDifferenceCase() {
+    void testMatchmakingNotWorkingCases() {
+        sv = new Server();
+        assertEquals("No players found for matchmaking. Try again later.", sv.matchmaking(p1, true));
+        assertEquals("No players found for matchmaking. Try again later.", sv.matchmaking(p1, false));
+        p1.setBanned(true);
+        assertEquals("Banned players cannot play. Matchmaking failed.", sv.matchmaking(p1, true));
+        assertEquals("Banned players cannot play. Matchmaking failed.", sv.matchmaking(p1, false));
+        sv.addPlayer(p1);
+        sv.addPlayer(p2);
+        sv.addPlayer(p3);
+        sv.addPlayer(p4);
+        assertEquals("Banned players cannot play. Matchmaking failed.", sv.matchmaking(p1, true));
+        assertEquals("Banned players cannot play. Matchmaking failed.", sv.matchmaking(p1, false));
+        p1.setBanned(false);
+        p1.setRank(5);
+        assertEquals("No players found for matchmaking. Try again later.", sv.matchmaking(p1, true));
+        assertEquals("No players found for matchmaking. Try again later.", sv.matchmaking(p1, false));
+    }
+
+    @Test
+    void testMatchmakingWinWorkingCase() {
+        assertEquals("Congratulations on winning! Matchmaking successful.", sv.matchmaking(p1, true));
+        assertEquals(2, p1.getRank());
+        assertEquals(1, p4.getRank());
+        assertEquals("Congratulations on winning! Matchmaking successful.", sv.matchmaking(p1, true));
+        assertEquals(3, p1.getRank());
+        assertEquals(1, p4.getRank());
+        assertEquals("No players found for matchmaking. Try again later.", sv.matchmaking(p1, true));
+        assertEquals("won", p1.getHistory().get(0));
+        assertEquals("lost", p4.getHistory().get(0));
+        assertEquals("won", p1.getHistory().get(1));
+        assertEquals("lost", p4.getHistory().get(1));
+
+    }
+
+    @Test
+    void testMatchmakingLoseWorkingCase() {
+        assertEquals("Better luck next time... Matchmaking successful.", sv.matchmaking(p1, false));
+        assertEquals(1, p1.getRank());
+        assertEquals(2, p4.getRank());
+        assertEquals("Better luck next time... Matchmaking successful.", sv.matchmaking(p1, false));
+        assertEquals(1, p1.getRank());
+        assertEquals(3, p4.getRank());
+        assertEquals("No players found for matchmaking. Try again later.", sv.matchmaking(p1, false));
+        assertEquals("lost", p1.getHistory().get(0));
+        assertEquals("won", p4.getHistory().get(0));
+        assertEquals("lost", p1.getHistory().get(1));
+        assertEquals("won", p4.getHistory().get(1));
+    }
+
+    @Test
+    void testMatchmakingMixedWorkingCase() {
+        assertEquals("Congratulations on winning! Matchmaking successful.", sv.matchmaking(p1, true));
+        assertEquals(2, p1.getRank());
+        assertEquals(1, p4.getRank());
+        assertEquals("Better luck next time... Matchmaking successful.", sv.matchmaking(p1, false));
+        assertEquals(1, p1.getRank());
+        assertEquals(2, p4.getRank());
+        assertEquals("Congratulations on winning! Matchmaking successful.", sv.matchmaking(p1, true));
+        assertEquals(2, p1.getRank());
+        assertEquals(1, p4.getRank());
+        assertEquals("Better luck next time... Matchmaking successful.", sv.matchmaking(p1, false));
+        assertEquals(1, p1.getRank());
+        assertEquals(2, p4.getRank());
+        assertEquals("won", p1.getHistory().get(0));
+        assertEquals("lost", p4.getHistory().get(0));
+        assertEquals("lost", p1.getHistory().get(1));
+        assertEquals("won", p4.getHistory().get(1));
+        assertEquals("won", p1.getHistory().get(2));
+        assertEquals("lost", p4.getHistory().get(2));
+        assertEquals("lost", p1.getHistory().get(3));
+        assertEquals("won", p4.getHistory().get(3));
+    }
+
+    @Test
+    void testMatchCriteria() {
         assertFalse(sv.matchCriteria(p1, p2));
         assertFalse(sv.matchCriteria(p2, p3));
         assertTrue(sv.matchCriteria(p1, p4));
@@ -72,10 +153,6 @@ public class ServerTest {
 
     @Test
     void testReport() {
-        sv.addPlayer(p1);
-        sv.addPlayer(p2);
-        sv.addPlayer(p3);
-        sv.addPlayer(p4);
         assertEquals("Player with given name is not found. Please try again.", sv.report("Surge"));
         assertEquals(p1.handleReport(), sv.report("MiesterZ"));
         assertEquals(p3.handleReport(), sv.report("Woozy"));

@@ -162,4 +162,5 @@ class PlayerTest {
         assertTrue(p1.isBanned());
         assertEquals(4, p1.getReportCount());
     }
+
 }

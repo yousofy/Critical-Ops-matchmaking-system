@@ -27,8 +27,8 @@ public class Server {
 
     // MODIFIES: player, opponent
     // EFFECTS: If the player is banned, does nothing and returns banned players cannot play.
-    //          Otherwise, given a player and match result (true=win, false=lose), finds a player to
-    //          match against. The two players must meet the matchmaking criteria according to
+    //          Otherwise, given a player and match result (true=win, false=lose), finds a different
+    //          player to match against. The two players must meet the matchmaking criteria according to
     //          matchCriteria. After the match, update both players' rank and history according to
     //          whether each player lost or won. Finally, returns matchmaking was successful.
     //          If no matching players were found at all, does nothing and returns no available players.
@@ -37,7 +37,7 @@ public class Server {
             return "Banned players cannot play. Matchmaking failed.";
         }
         for (Player opponent : players) {
-            if (matchCriteria(player, opponent)) {
+            if (matchCriteria(player, opponent) && player != opponent) {
                 player.updateRank(result);
                 player.updateHistory(result);
                 opponent.updateRank(!result);
@@ -49,7 +49,7 @@ public class Server {
                 }
             }
         }
-        return "No available players found for matchmaking. Try again later.";
+        return "No players found for matchmaking. Try again later.";
     }
 
     // REQUIRES: !player.isBanned()
