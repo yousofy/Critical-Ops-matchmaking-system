@@ -5,6 +5,7 @@ import model.Player;
 import model.Server;
 
 // Description: Critical Ops Matchmaking system console based interface
+//              with the code being inspired by the TellerApp application
 public class CriticalOpsGame {
     private Server sv;
     private Scanner input;
@@ -168,7 +169,6 @@ public class CriticalOpsGame {
         }
     }
 
-    // MODIFIES: this
     // EFFECTS: displays the given player's skins in their inventory
     private void viewSkins() {
         System.out.println("Please enter the name of the player you would like to view the inventory of:");

@@ -22,7 +22,7 @@ public class Player {
 
     // REQUIRES: name and gameMode are non-empty strings, gameMode is a valid type
     // EFFECTS: creates a player profile with given name and game mode.
-    //          The player is given a unique id, starts with the first rank,
+    //          The player starts with the first rank which is Bronze,
     //          has a history of no games played, has no cosmetic items,
     //          has 0 reports on their name, and is not banned from playing.
     public Player(String name, String gameMode) {

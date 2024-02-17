@@ -37,7 +37,7 @@ public class Server {
 
     // MODIFIES: player, opponent
     // EFFECTS: If the player is banned, does nothing and returns banned players cannot play.
-    //          Otherwise, given a player and match result (true=win, false=lose), finds a different
+    //          Otherwise, given a player and match result (true = win, false = lose), finds a different
     //          player to match against. The two players must meet the matchmaking criteria according to
     //          matchCriteria. After the match, update both players' rank and history according to
     //          whether each player lost or won. Finally, returns matchmaking was successful.
