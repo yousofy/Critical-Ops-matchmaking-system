@@ -15,6 +15,8 @@ could introduce  new features for the current game.
 
 ## User Stories:
 
+### Phase 0 & 1
+
 - As a User, I want to be able to add a player to the server*
 - As a User, I want to be able to view all the players in the server
 - As a User, I want to be able to play against other players based on my rank and game mode
@@ -22,6 +24,11 @@ could introduce  new features for the current game.
 - As a User, I want to be able to view the result of my previous games
 - As a User, I want to be able to report other players for cheating, so they get banned
 - As a User, I want to be able to view the current items I own in my inventory
+
+### Phase 2
+
+- As a User, I want to have the option to save the current server to file in the main menu
+- As a User, I want to have the option to load a previous server from file in the main menu
 
 (* although a single player can have multiple accounts, we will assume 
 everyone in the server is a unique person as it would be impossible for 
