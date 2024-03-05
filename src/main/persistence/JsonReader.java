@@ -82,10 +82,8 @@ public class JsonReader {
     // EFFECTS: converts a jsonArray to ArrayList
     public ArrayList<String> jsonArrayToArrayList(JSONArray jsonArray) {
         ArrayList<String> list = new ArrayList<String>();
-        if (jsonArray != null) {
-            for (int i = 0; i < jsonArray.length(); i++) {
-                list.add(jsonArray.getString(i));
-            }
+        for (int i = 0; i < jsonArray.length(); i++) {
+            list.add(jsonArray.getString(i));
         }
         return list;
     }
