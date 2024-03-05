@@ -3,7 +3,6 @@ package model;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-// Test suits for the Server Class
 public class ServerTest {
     private Server sv;
     private Player p1;

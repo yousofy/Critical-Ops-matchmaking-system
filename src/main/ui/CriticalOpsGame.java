@@ -1,14 +1,21 @@
 package ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 import model.Player;
 import model.Server;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 // Description: Critical Ops Matchmaking system console based interface
 //              with the code being inspired by the TellerApp application
 public class CriticalOpsGame {
+    private static final String JSON_STORE = "./data/server.json";
     private Server sv;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the matchmaking application
     public CriticalOpsGame() {
@@ -16,7 +23,7 @@ public class CriticalOpsGame {
     }
 
     // MODIFIES: this
-    // EFFECTS: processes user input
+    // EFFECTS: constructs application and processes user input
     private void runGame() {
         boolean keepGoing = true;
         String command = null;
@@ -24,12 +31,14 @@ public class CriticalOpsGame {
         sv = new Server();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
 
         while (keepGoing) {
             displayMenu();
             command = input.next();
 
-            if (command.equals("8")) {
+            if (command.equals("0")) {
                 keepGoing = false;
             } else {
                 processCommand(command);
@@ -56,6 +65,10 @@ public class CriticalOpsGame {
             reportPlayer();
         } else if (command.equals("7")) {
             viewSkins();
+        } else if (command.equals("8")) {
+            saveServer();
+        } else if (command.equals("9")) {
+            loadServer();
         } else {
             System.out.println("Invalid selection. Please try again.");
         }
@@ -72,7 +85,9 @@ public class CriticalOpsGame {
         System.out.println("5 -> view match history");
         System.out.println("6 -> report player");
         System.out.println("7 -> view inventory");
-        System.out.println("8 -> quit");
+        System.out.println("8 -> save server to file");
+        System.out.println("9 -> load server to file");
+        System.out.println("0 -> quit");
     }
 
     // MODIFIES: this
@@ -177,6 +192,29 @@ public class CriticalOpsGame {
             System.out.println(sv.findPlayer(name).getSkins());
         } else {
             System.out.println("Player does not exist in the server. Please try again.");
+        }
+    }
+
+    // EFFECTS: saves the server to file
+    private void saveServer() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(sv);
+            jsonWriter.close();
+            System.out.println("Saved server to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads server from file
+    private void loadServer() {
+        try {
+            sv = jsonReader.read();
+            System.out.println("Loaded server from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }

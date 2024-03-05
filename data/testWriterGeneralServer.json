@@ -1,0 +1,32 @@
+{"players": [
+    {
+        "skins": [
+            "Karambit Elite",
+            "FP6 Catacomb"
+        ],
+        "name": "Cuddling",
+        "rank": 4,
+        "reportCount": 4,
+        "history": [
+            "won",
+            "won"
+        ],
+        "banned": true,
+        "gameMode": "GunGame"
+    },
+    {
+        "skins": [
+            "XD.45 Inked",
+            "XD.45 Inked"
+        ],
+        "name": "Yousof",
+        "rank": 2,
+        "reportCount": 0,
+        "history": [
+            "lost",
+            "won"
+        ],
+        "banned": false,
+        "gameMode": "1v1"
+    }
+]}

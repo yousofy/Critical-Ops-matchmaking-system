@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.*;
 
 // Description: Represents the game's server which holds all active
 //              players in the server and can perform operations on them.
-public class Server {
+public class Server implements Writable {
     private ArrayList<Player> players;       // all the players that exist in the server
 
     // EFFECTS: creates a new server with no existing players
@@ -68,6 +72,24 @@ public class Server {
     public boolean matchCriteria(Player player, Player opponent) {
         return !opponent.isBanned() && player.getGameMode().equals(opponent.getGameMode())
                 && player.getRank() + 1 >= opponent.getRank() && player.getRank() - 1 <= opponent.getRank();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("players", playersToJson());
+        return json;
+    }
+
+    // EFFECTS: returns players in this server as a JSON array
+    private JSONArray playersToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Player p : players) {
+            jsonArray.put(p.toJson());
+        }
+
+        return jsonArray;
     }
 
 }

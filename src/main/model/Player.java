@@ -1,10 +1,13 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.*;
 
 // Description: Represents a player having a unique name, rank, game mode,
 //              match history, gun skins, report count, and ban status.
-public class Player {
+public class Player implements Writable {
     private static final int BRONZE = 1;
     private static final int SILVER = 2;
     private static final int GOLD = 3;
@@ -70,12 +73,24 @@ public class Player {
         return history;
     }
 
+    public void setHistory(ArrayList<String> history) {
+        this.history = history;
+    }
+
     public ArrayList<String> getSkins() {
         return skins;
     }
 
+    public void setSkins(ArrayList<String> skins) {
+        this.skins = skins;
+    }
+
     public int getReportCount() {
         return reportCount;
+    }
+
+    public void setReportCount(int reportCount) {
+        this.reportCount = reportCount;
     }
 
     public boolean isBanned() {
@@ -146,6 +161,19 @@ public class Player {
             banned = true;
             return "Your report has been received. The player has been banned.";
         }
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("gameMode", gameMode);
+        json.put("rank", rank);
+        json.put("history", history);
+        json.put("skins", skins);
+        json.put("reportCount", reportCount);
+        json.put("banned", banned);
+        return json;
     }
 
 }

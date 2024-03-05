@@ -1,0 +1,22 @@
+{
+  "players": [
+    {
+      "name": "Woozy",
+      "gameMode": "1v1",
+      "rank" : 2,
+      "history": ["won", "lost"],
+      "skins": ["XD.45 Inked", "FP6 Catacomb"],
+      "reportCount" : 3,
+      "banned": false
+    },
+    {
+      "name": "MiesterZ",
+      "gameMode": "Defuse",
+      "rank" : 3,
+      "history": ["lost", "lost"],
+      "skins": ["AK-47 Koi", "AK-47 Koi"],
+      "reportCount" : 4,
+      "banned": true
+    }
+  ]
+}
