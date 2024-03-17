@@ -16,13 +16,16 @@ public class Server implements Writable {
         players = new ArrayList<>();
     }
 
-    // REQUIRES: the player's name is not already contained in the server
     // MODIFIES: this
-    // EFFECTS: adds given player to the server, does nothing if player already exists
-    public void addPlayer(Player player) {
-        if (!players.contains(player)) {
-            players.add(player);
+    // EFFECTS: adds given player to the server, does nothing if player's name already exists
+    public String addPlayer(Player player) {
+        for (Player p : players) {
+            if (p.getName().equals(player.getName())) {
+                return "A player with the same name exists. Please choose a different name.";
+            }
         }
+        players.add(player);
+        return "Player created successfully!";
     }
 
     public ArrayList<Player> getPlayers() {
@@ -74,6 +77,7 @@ public class Server implements Writable {
                 && player.getRank() + 1 >= opponent.getRank() && player.getRank() - 1 <= opponent.getRank();
     }
 
+    // EFFECTS: returns this as JSON object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

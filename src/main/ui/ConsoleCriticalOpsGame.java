@@ -10,7 +10,7 @@ import persistence.JsonWriter;
 
 // Description: Critical Ops Matchmaking system console based interface
 //              with the code being inspired by the TellerApp application
-public class CriticalOpsGame {
+public class ConsoleCriticalOpsGame {
     private static final String JSON_STORE = "./data/server.json";
     private Server sv;
     private Scanner input;
@@ -18,7 +18,7 @@ public class CriticalOpsGame {
     private JsonReader jsonReader;
 
     // EFFECTS: runs the matchmaking application
-    public CriticalOpsGame() {
+    public ConsoleCriticalOpsGame() {
         runGame();
     }
 
@@ -103,16 +103,16 @@ public class CriticalOpsGame {
         Player player;
         if (command.equals("1")) {
             player = new Player(name, "1v1");
-            sv.addPlayer(player);
-            System.out.println("Player created successfully!");
+            String output = sv.addPlayer(player);
+            System.out.println(output);
         } else if (command.equals("2")) {
             player = new Player(name, "Defuse");
-            sv.addPlayer(player);
-            System.out.println("Player created successfully!");
+            String output = sv.addPlayer(player);
+            System.out.println(output);
         } else if (command.equals("3")) {
             player = new Player(name, "GunGame");
-            sv.addPlayer(player);
-            System.out.println("Player created successfully!");
+            String output = sv.addPlayer(player);
+            System.out.println(output);
         } else {
             System.out.println("Invalid selection. Please try again.");
         }

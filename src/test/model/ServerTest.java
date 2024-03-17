@@ -33,15 +33,15 @@ public class ServerTest {
     void testAddPlayer() {
         sv = new Server();
         assertEquals(0, sv.getPlayers().size());
-        sv.addPlayer(p1);
+        assertEquals("Player created successfully!", sv.addPlayer(p1));
         assertEquals(1, sv.getPlayers().size());
-        sv.addPlayer(p1);
+        assertEquals("A player with the same name exists. Please choose a different name.", sv.addPlayer(p1));
         assertEquals(1, sv.getPlayers().size());
-        sv.addPlayer(p2);
+        assertEquals("Player created successfully!", sv.addPlayer(p2));
         assertEquals(2, sv.getPlayers().size());
-        sv.addPlayer(p3);
+        assertEquals("Player created successfully!", sv.addPlayer(p3));
         assertEquals(3, sv.getPlayers().size());
-        sv.addPlayer(p3);
+        assertEquals("A player with the same name exists. Please choose a different name.", sv.addPlayer(p3));
         assertEquals(3, sv.getPlayers().size());
     }
 
