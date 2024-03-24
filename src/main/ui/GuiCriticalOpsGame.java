@@ -155,6 +155,7 @@ public class GuiCriticalOpsGame {
         playersFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         playersFrame.add(scrollPane);
         playersFrame.pack();
+        playersFrame.setLocationRelativeTo(null);
         playersFrame.setVisible(true);
     }
 
@@ -209,6 +210,7 @@ public class GuiCriticalOpsGame {
             }
             historyFrame.add(new JScrollPane(textArea));
             historyFrame.pack();
+            historyFrame.setLocationRelativeTo(null);
             historyFrame.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(frame, "Player does not exist in the server. Please try again.");
@@ -246,6 +248,7 @@ public class GuiCriticalOpsGame {
             }
             skinsFrame.add(new JScrollPane(textArea));
             skinsFrame.pack();
+            skinsFrame.setLocationRelativeTo(null);
             skinsFrame.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(frame, "Player does not exist in the server. Please try again.");
