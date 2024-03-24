@@ -1,0 +1,118 @@
+{"players": [
+    {
+        "skins": [
+            "XD.45 Inked",
+            "XD.45 Inked",
+            "XD.45 Inked",
+            "AK-47 Koi",
+            "AK-47 Koi",
+            "AK-47 Koi"
+        ],
+        "name": "1",
+        "rank": 4,
+        "reportCount": 0,
+        "history": [
+            "won",
+            "lost",
+            "lost",
+            "won",
+            "lost",
+            "lost",
+            "won",
+            "won",
+            "won"
+        ],
+        "banned": false,
+        "gameMode": "1v1"
+    },
+    {
+        "skins": ["XD.45 Inked"],
+        "name": "2",
+        "rank": 1,
+        "reportCount": 0,
+        "history": [
+            "lost",
+            "won",
+            "lost",
+            "won",
+            "lost",
+            "lost",
+            "lost"
+        ],
+        "banned": false,
+        "gameMode": "1v1"
+    },
+    {
+        "skins": [
+            "FP6 Catacomb",
+            "XD.45 Inked",
+            "XD.45 Inked",
+            "XD.45 Inked"
+        ],
+        "name": "3",
+        "rank": 3,
+        "reportCount": 0,
+        "history": [
+            "won",
+            "won",
+            "lost",
+            "won"
+        ],
+        "banned": false,
+        "gameMode": "1v1"
+    },
+    {
+        "skins": [],
+        "name": "4",
+        "rank": 1,
+        "reportCount": 0,
+        "history": [],
+        "banned": false,
+        "gameMode": "Defuse"
+    },
+    {
+        "skins": [],
+        "name": "5",
+        "rank": 1,
+        "reportCount": 4,
+        "history": [],
+        "banned": true,
+        "gameMode": "Defuse"
+    },
+    {
+        "skins": [],
+        "name": "6",
+        "rank": 1,
+        "reportCount": 0,
+        "history": [],
+        "banned": false,
+        "gameMode": "Defuse"
+    },
+    {
+        "skins": [],
+        "name": "9",
+        "rank": 1,
+        "reportCount": 0,
+        "history": [],
+        "banned": false,
+        "gameMode": "GunGame"
+    },
+    {
+        "skins": [],
+        "name": "7",
+        "rank": 1,
+        "reportCount": 0,
+        "history": [],
+        "banned": false,
+        "gameMode": "GunGame"
+    },
+    {
+        "skins": [],
+        "name": "8",
+        "rank": 1,
+        "reportCount": 0,
+        "history": [],
+        "banned": false,
+        "gameMode": "GunGame"
+    }
+]}
