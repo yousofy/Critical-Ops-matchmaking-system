@@ -11,7 +11,7 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 // Description: Critical Ops Matchmaking system graphical based interface with the
-//              code being inspired by the recommended projects and java documentation
+//              code being inspired by the example projects and java documentation
 public class GuiCriticalOpsGame {
     private static final String JSON_STORE = "./data/server.json";
     private Server sv;
