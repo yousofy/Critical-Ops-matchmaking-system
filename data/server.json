@@ -8,10 +8,11 @@
             "AK-47 Koi",
             "AK-47 Koi",
             "AK-47 Koi",
-            "FP6 Catacomb"
+            "FP6 Catacomb",
+            "AK-47 Koi"
         ],
         "name": "1",
-        "rank": 3,
+        "rank": 4,
         "reportCount": 0,
         "history": [
             "won",
@@ -23,7 +24,8 @@
             "won",
             "won",
             "won",
-            "lost"
+            "lost",
+            "won"
         ],
         "banned": false,
         "gameMode": "1v1"
@@ -50,17 +52,19 @@
             "FP6 Catacomb",
             "XD.45 Inked",
             "XD.45 Inked",
-            "XD.45 Inked"
+            "XD.45 Inked",
+            "FP6 Catacomb"
         ],
         "name": "3",
-        "rank": 4,
+        "rank": 3,
         "reportCount": 0,
         "history": [
             "won",
             "won",
             "lost",
             "won",
-            "won"
+            "won",
+            "lost"
         ],
         "banned": false,
         "gameMode": "1v1"

@@ -33,4 +33,17 @@ could introduce  new features for the current game.
 (* although a single player can have multiple accounts, we will assume 
 everyone in the server is a unique person as it would be impossible for 
 someone to play against themselves. Essentially, every player in the server
-represents a different user) 
+represents a different user)
+
+# Instructions for Grader
+
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by 
+selecting the menu item labelled "Create Player."
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by
+selecting the menu item labelled "View Players."
+- You can locate my visual component by starting the application or viewing the menu button icons.
+- You can save the state of my application by selecting the menu item labelled "Save Server."
+- You can reload the state of my application by selecting the menu item labelled "Load Server."
+
+extra: All the other buttons in the menu work and are successfully handled in the code. In other
+words, my GUI fully represents the functionality of my application. 
