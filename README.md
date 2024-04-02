@@ -46,4 +46,58 @@ selecting the menu item labelled "View Players."
 - You can reload the state of my application by selecting the menu item labelled "Load Server."
 
 extra: All the other buttons in the menu work and are successfully handled in the code. In other
-words, my GUI fully represents the functionality of my application. 
+words, my GUI fully represents the functionality of my application.
+
+
+## Phase 4: Task 2
+
+Tue Apr 02 16:37:15 PDT 2024
+Player created.
+
+Tue Apr 02 16:37:17 PDT 2024
+Player created.
+
+Tue Apr 02 16:37:21 PDT 2024
+Player not created.
+
+Tue Apr 02 16:37:25 PDT 2024
+Player rank increased.
+
+Tue Apr 02 16:37:25 PDT 2024
+Added win to history.
+
+Tue Apr 02 16:37:25 PDT 2024
+Player rank did not change.
+
+Tue Apr 02 16:37:25 PDT 2024
+Added loss to history.
+
+Tue Apr 02 16:37:25 PDT 2024
+Matchmaking did occur (win).
+
+Tue Apr 02 16:37:28 PDT 2024
+Player rank increased.
+
+Tue Apr 02 16:37:28 PDT 2024
+Added win to history.
+
+Tue Apr 02 16:37:28 PDT 2024
+Player rank decreased.
+
+Tue Apr 02 16:37:28 PDT 2024
+Added loss to history.
+
+Tue Apr 02 16:37:28 PDT 2024
+Matchmaking did occur (win).
+
+Tue Apr 02 16:37:32 PDT 2024
+Added XD.45 Inked to inventory.
+
+Tue Apr 02 16:37:35 PDT 2024
+Added nothing to inventory.
+
+Tue Apr 02 16:37:39 PDT 2024
+Report count increased.
+
+Tue Apr 02 16:37:41 PDT 2024
+Report count increased.

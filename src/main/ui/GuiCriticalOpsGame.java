@@ -3,8 +3,13 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import model.Event;
+import model.EventLog;
 import model.Player;
 import model.Server;
 import persistence.JsonReader;
@@ -18,6 +23,7 @@ public class GuiCriticalOpsGame {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private JFrame frame;
+    private EventLog el = EventLog.getInstance();
 
     // MODIFIES: this
     // EFFECTS: runs the matchmaking application by displaying a splash image first
@@ -64,6 +70,15 @@ public class GuiCriticalOpsGame {
         placeComponents(panel);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+
+        frame.addWindowListener(new WindowAdapter() {
+            // EFFECTS: Prints all the events to console when the window is closed
+            public void windowClosing(WindowEvent e) {
+                for (Event next : el) {
+                    System.out.println(next.toString() + "\n");
+                }
+            }
+        });
     }
 
     // MODIFIES: this

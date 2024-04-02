@@ -109,8 +109,12 @@ public class Player implements Writable {
     public void updateRank(boolean result) {
         if (result && getRank() != 5) {
             rank += 1;
+            EventLog.getInstance().logEvent(new Event("Player rank increased."));
         } else if (!result && getRank() != 1) {
             rank -= 1;
+            EventLog.getInstance().logEvent(new Event("Player rank decreased."));
+        } else {
+            EventLog.getInstance().logEvent(new Event("Player rank did not change."));
         }
     }
 
@@ -120,8 +124,10 @@ public class Player implements Writable {
     public void updateHistory(boolean result) {
         if (result) {
             history.add("won");
+            EventLog.getInstance().logEvent(new Event("Added win to history."));
         } else {
             history.add("lost");
+            EventLog.getInstance().logEvent(new Event("Added loss to history."));
         }
     }
 
@@ -131,18 +137,23 @@ public class Player implements Writable {
     //          The skin is added to the player's skins collection and a confirmation message is returned.
     public String claimSkins() {
         if (BRONZE == getRank()) {
+            EventLog.getInstance().logEvent(new Event("Added nothing to inventory."));
             return "Rank too low! Gain a higher rank to receive skins.";
         } else if (SILVER == getRank()) {
             skins.add("XD.45 Inked");
+            EventLog.getInstance().logEvent(new Event("Added XD.45 Inked to inventory."));
             return "Congratulations on reaching Silver! You received: XD.45 Inked.";
         } else if (GOLD == getRank()) {
             skins.add("FP6 Catacomb");
+            EventLog.getInstance().logEvent(new Event("Added FP6 Catacomb Inked to inventory."));
             return "Congratulations on reaching Gold! You received: FP6 Catacomb.";
         } else if (PLATINUM == getRank()) {
             skins.add("AK-47 Koi");
+            EventLog.getInstance().logEvent(new Event("Added AK-47 Koi Inked to inventory."));
             return "Congratulations on reaching Platinum! You received: AK-47 Koi.";
         } else {
             skins.add("Karambit Elite");
+            EventLog.getInstance().logEvent(new Event("Added Karambit Elite Inked to inventory."));
             return "Congratulations on reaching Diamond! You received: Karambit Elite.";
         }
     }
@@ -153,12 +164,15 @@ public class Player implements Writable {
     //          player is already banned, does nothing and returns the player is already banned.
     public String handleReport() {
         if (isBanned()) {
+            EventLog.getInstance().logEvent(new Event("Report count did not change."));
             return "The player has already been banned by previous reports.";
         } else if (getReportCount() < MAXREPORT) {
             reportCount++;
+            EventLog.getInstance().logEvent(new Event("Report count increased."));
             return "Your report has been received. Thank you for your feedback.";
         } else {
             banned = true;
+            EventLog.getInstance().logEvent(new Event("Report count increased and banned player."));
             return "Your report has been received. The player has been banned.";
         }
     }

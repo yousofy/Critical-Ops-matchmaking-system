@@ -21,10 +21,12 @@ public class Server implements Writable {
     public String addPlayer(Player player) {
         for (Player p : players) {
             if (p.getName().equals(player.getName())) {
+                EventLog.getInstance().logEvent(new Event("Player not created."));
                 return "A player with the same name exists. Please choose a different name.";
             }
         }
         players.add(player);
+        EventLog.getInstance().logEvent(new Event("Player created."));
         return "Player created successfully!";
     }
 
@@ -51,6 +53,7 @@ public class Server implements Writable {
     //          If no matching players were found at all, does nothing and returns no available players.
     public String matchmaking(Player player, boolean result) {
         if (player.isBanned()) {
+            EventLog.getInstance().logEvent(new Event("Matchmaking did not occur (banned)."));
             return "Banned players cannot play. Matchmaking failed.";
         }
         for (Player opponent : players) {
@@ -60,12 +63,15 @@ public class Server implements Writable {
                 opponent.updateRank(!result);
                 opponent.updateHistory(!result);
                 if (result) {
+                    EventLog.getInstance().logEvent(new Event("Matchmaking did occur (win)."));
                     return "Congratulations on winning! Matchmaking successful.";
                 } else {
+                    EventLog.getInstance().logEvent(new Event("Matchmaking did occur (loss)."));
                     return "Better luck next time... Matchmaking successful.";
                 }
             }
         }
+        EventLog.getInstance().logEvent(new Event("Matchmaking did not occur (no players)."));
         return "No players found for matchmaking. Try again later.";
     }
 
