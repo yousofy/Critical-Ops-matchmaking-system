@@ -1,6 +1,6 @@
 # Critical Ops matchmaking system
 
-## Description:
+## Description
 
 The Critical Ops matchmaking system will hold details about each player
 and allows them to match against other players in certain game modes to gain a higher rating.
@@ -13,7 +13,7 @@ currently the only game I still play while studying at UBC. The game
 does not contain some of the game modes and player details in this project, so I thought this application 
 could introduce  new features for the current game.
 
-## User Stories:
+## User Stories
 
 ### Phase 0 & 1
 
@@ -101,3 +101,24 @@ Report count increased.
 
 Tue Apr 02 16:37:41 PDT 2024
 Report count increased.
+
+## Phase 4: Task 3
+
+One improvement I can see with my current UML diagram is that I 
+could try to refactor the Console and GUI classes and extract their
+common functionality into a parent class. For example, both classes
+share the fields Server, JsonWriter, and JsonReader. I could make a parent
+abstract class which could hold those fields and then make the Console
+and GUI classes extend it. This way if I intend to add extra functionality
+in the future which is common to both classes I could just add it in the abstract
+class. Duplicated code is usually a bad thing so if I had more time I would
+definitely do it. 
+
+Also, if I intend to add methods with similar purposes
+but different implementations, the compiler would remind me that I need
+to implement the abstract methods in both classes. This is very helpful
+as both user interface types have the same buttons/options. So another
+refactoring process I could do is to create abstract methods in the 
+parent class and implement them specifically in each class. This is a 
+great way to get rid of duplication and not to miss out on what both
+user interfaces must offer. 
