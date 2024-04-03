@@ -31,6 +31,7 @@ public class Server implements Writable {
     }
 
     public ArrayList<Player> getPlayers() {
+        EventLog.getInstance().logEvent(new Event("Players shown."));
         return players;
     }
 

@@ -7,6 +7,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import model.Event;
 import model.EventLog;
@@ -152,9 +153,10 @@ public class GuiCriticalOpsGame {
     private void viewPlayers() {
         String[] columnNames = {"Name", "Game Mode", "Rank", "Banned"};
 
-        Object[][] data = new Object[sv.getPlayers().size()][4];
+        ArrayList<Player> players = sv.getPlayers();
+        Object[][] data = new Object[players.size()][4];
         int i = 0;
-        for (Player player : sv.getPlayers()) {
+        for (Player player : players) {
             data[i][0] = player.getName();
             data[i][1] = player.getGameMode();
             data[i][2] = player.getDisplayRank();
