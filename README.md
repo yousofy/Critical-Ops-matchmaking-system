@@ -11,3 +11,8 @@ and analyse their statistics from previous games. This project is important to
 me because I grew up with this game nearly 9 years ago. The game
 does not contain some of the game modes and player details in this project, so I thought this application 
 could introduce  new features for the current game.
+
+## Instructions
+
+After cloning the repository on your local computer, run Main.java located in
+.\Critical-Ops-matchmaking-system-main\src\main\ui\Main.java
