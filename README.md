@@ -14,5 +14,5 @@ could introduce  new features for the current game.
 
 ## Instructions
 
-After cloning the repository on your local computer, run Main.java located in
+After cloning the repository on your local computer, run Main.java located in   
 .\Critical-Ops-matchmaking-system-main\src\main\ui\Main.java
